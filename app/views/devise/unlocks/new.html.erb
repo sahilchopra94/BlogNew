@@ -1,0 +1,23 @@
+
+<div id="background">
+  <div class="layer"></div>
+</div>
+<h2>Resend unlock instructions</h2>
+
+<%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: 'fields' %>
+  </div>
+
+  <div class="actions">
+    <div class="fields">
+
+    <%= f.submit "Resend unlock instructions",class:'btn btn-primary' %>
+  </div></div>
+<% end %>
+
+<div class="a:link">
+<%= render "devise/shared/links" %></div>

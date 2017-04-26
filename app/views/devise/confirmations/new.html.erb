@@ -1,0 +1,33 @@
+<style>
+body {
+    background-image: url("/assets/Blog_Background.jpg"); 
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+}
+
+ .fields{
+  float: left;
+   width: 60%; 
+   display: block;
+   color: black
+ }
+</style>
+<h2>Resend confirmation instructions</h2>
+
+<%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class: 'fields' %>
+  </div>
+
+  <div class="actions">
+      <div class="fields">
+
+    <%= f.submit "Resend confirmation instructions",class:'btn btn-primary' %>
+  </div></div>
+<% end %>
+
+<%= render "devise/shared/links" %>

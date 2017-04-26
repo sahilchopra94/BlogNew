@@ -1,0 +1,89 @@
+
+
+<section class="block">
+    <div id="myCarousel" class="carousel slide">
+        <div class="carousel-inner">
+            <div class="active item">
+                <img src="/assets/docstrange2.jpg" alt="Slide1" />
+            </div>
+            <div class="item">
+                <img src="/assets/spectre2.jpg" alt="Slide2" />
+            </div>
+            <div class="item">
+                <img src="/assets/moana2.jpg" alt="Slide3" />
+            </div>
+        </div>
+        <a class="carousel-control left" href="#myCarousel" data-slide="prev">‹</a>
+ <a class="carousel-control right" href="#myCarousel" data-slide="next">›</a>
+
+    </div>
+</section>
+<div class="row" style="margin: 0px;">
+<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" >
+<h1 class="text-center">Our Collection</h1></div>
+</div>
+<div class="hidden-xs hidden-sm">
+<p class="movie-title">
+Welcome to the official comment aggregator site<b>Articles Galore</b> . Only here,  can you find the largest collection of latest movies,songs and albums that are trending worldwide. So, hop on the bandwagon to see what's worth your time in the entertainment world..
+</p>
+</div>
+
+  <div class="container">
+   <div class="row">
+        <% @articles.each do |article| %>
+     <div class="a:link col-lg-3 col-md-3 col-sm-6 col-xs-12">
+
+      <%=link_to image_tag(article.photo.url( :medium)), article_path(article), :class => 'img-center'%>
+      <div class="movie-title col-xs-12"><%=link_to article.title, article %>
+
+            <div class="col-xs-12 col-md-12 col-sm-12" >
+         <% if user_signed_in? && article.user_id == current_user.id %>
+
+        <%= link_to 'Show', article, class: 'btn btn-primary btn-xs' %>
+        <%= link_to 'Edit', edit_article_path(article), class: 'btn btn-info btn-xs' %>
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?'}, class: 'btn btn-danger btn-xs' %><% end %></div></div></div>
+    <% end %>
+</div>
+</div>
+
+<br>
+
+<%=link_to new_article_path, class: 'btn btn-success' do %>
+  <i class="glyphicon glyphicon-plus"></i> New Article
+<% end %>
+
+<div id="facts" class="parallax parallax2 facts">
+        <div class="container inner" style="padding-top: 130px; padding-bottom: 130px;">
+            <div class="row text-center ">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-6">
+                    <div class="col-wrapper">
+                    <div class=" bm10"> <i class="fa fa-line-chart fa-4x"></i> </div>
+                    <h3>250+ </h3>
+<p>Daily Views..And still counting!!</p>
+                </div>
+            </div>
+                <div class="col-sm-3 col-xs-6">
+                <div class="col-wrapper">
+                    <div class=" bm10"> <i class="fa fa-money fa-4x"></i> </div>
+                    <h3>LOGIN FOR FREE</h3>
+                    <p>And see which new movie is truly worth your money..FOR FREE!! </p>
+                </div>
+            </div>
+                <div class="col-sm-3 col-xs-6">
+                <div class="col-wrapper">
+                    <div class=" bm10"> <i class="fa fa-users fa-4x"></i> </div>
+                    <h3>150+</h3>
+                    <p>Trusted Subscribers and Movie Reviewers*  </p>
+                </div>
+            </div>
+                <div class="col-sm-3 col-xs-6">
+                <div class="col-wrapper">
+                    <div class=" bm10"> <i class="fa fa-line-chart fa-4x"></i> </div>
+                    <h3>Ranked 1st </h3>
+                    <p>As the top Comment Aggregator site..jumping up 3 places from our previous year standings! </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /.container --> 
+    </div><!-- #facts -->
